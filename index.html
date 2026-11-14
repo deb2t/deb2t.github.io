@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function(){
+  try {
+    var t = localStorage.getItem('theme');
+    if (t !== 'light' && t !== 'dark') {
+      t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Debdut Chowdhury</title>
+<meta name="description" content="Debdut Chowdhury — Senior Data Analyst specializing in Python, SQL, BigQuery, PySpark and cloud data pipelines. Nearly 4 years building scalable ETL, data warehouses and BI dashboards." />
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#FAEFD4" media="(prefers-color-scheme: light)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Debdut Chowdhury" />
+<meta property="og:title" content="Debdut Chowdhury — Senior Data Analyst" />
+<meta property="og:description" content="Senior Data Analyst specializing in Python, SQL, BigQuery, PySpark and cloud data pipelines." />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Debdut Chowdhury — Senior Data Analyst" />
+<meta name="twitter:description" content="Senior Data Analyst specializing in Python, SQL, BigQuery, PySpark and cloud data pipelines." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='58' fill='%23ededed' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Debdut Chowdhury",
+  "jobTitle": "Senior Data Analyst",
+  "email": "mailto:debdut.chowdhury.official@gmail.com",
+  "telephone": "+91 6290097207",
+  "address": { "@type": "PostalAddress", "addressLocality": "Kolkata", "addressCountry": "IN" },
+  "sameAs": [
+    "https://github.com/DebdutChowdhury",
+    "https://linkedin.com/in/debdutchowdhury"
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elev: #111111;
+    --fg: #ededed;
+    --fg-muted: #8a8a8a;
+    --fg-faint: #555555;
+    --line: #232323;
+    --line-soft: #1a1a1a;
+    --invert-bg: #ededed;
+    --invert-fg: #0a0a0a;
+    --header-h: 64px;
+    --gap-sm: clamp(2rem, 4vw, 3rem);
+    --gap-md: clamp(3rem, 6vw, 4.5rem);
+    --gap-lg: clamp(3.5rem, 7vw, 5rem);
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #FAEFD4; --bg-elev: #FAEFD4; --fg: #4A3D1C; --fg-muted: #6E5F38; --fg-faint: #857650;
+      --line: #E6D8B4; --line-soft: #EFE2C2; --invert-bg: #4A3D1C; --invert-fg: #FAEFD4;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #FAEFD4; --bg-elev: #FAEFD4; --fg: #4A3D1C; --fg-muted: #6E5F38; --fg-faint: #857650;
+    --line: #E6D8B4; --line-soft: #EFE2C2; --invert-bg: #4A3D1C; --invert-fg: #FAEFD4;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Mono", "Cascadia Code", Consolas, "Roboto Mono", monospace; }
+  a { color: inherit; }
+  strong, b { font-weight: 600; }
+
+  .skip-link {
+    position: absolute; left: 1rem; top: -3rem;
+    background: var(--invert-bg); color: var(--invert-fg);
+    padding: 0.6rem 1rem; border-radius: 4px; z-index: 100;
+    transition: top 160ms ease; text-decoration: none; font-size: 0.85rem;
+  }
+  .skip-link:focus { top: 1rem; }
+
+  .wrap {
+    max-width: 860px; margin: 0 auto;
+    padding-left: clamp(1.25rem, 5vw, 2rem);
+    padding-right: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 50; height: var(--header-h);
+    display: flex; align-items: center;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    max-width: 860px; margin: 0 auto; width: 100%;
+    padding-left: clamp(1.25rem, 5vw, 2rem); padding-right: clamp(1.25rem, 5vw, 2rem);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  .logo {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; font-weight: 600; font-size: 1.2rem; line-height: 1;
+    text-decoration: none; border: 1px solid var(--line); border-radius: 6px;
+  }
+  .header-right { display: flex; align-items: center; gap: 1.5rem; }
+  nav.primary { display: flex; gap: 1.5rem; }
+  nav.primary a {
+    text-decoration: none; font-size: 0.88rem; color: var(--fg-muted);
+    padding-bottom: 2px; border-bottom: 1px solid transparent;
+    transition: color 160ms ease, border-color 160ms ease;
+  }
+  nav.primary a:hover, nav.primary a.active { color: var(--fg); border-color: var(--fg); }
+
+  .icon-btn {
+    background: none; border: 1px solid var(--line); color: var(--fg);
+    width: 34px; height: 34px; border-radius: 6px;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: border-color 160ms ease;
+  }
+  .icon-btn:hover { border-color: var(--fg-muted); }
+  .icon-btn svg { width: 16px; height: 16px; }
+  .icon-btn .moon { display: none; }
+  :root[data-theme="light"] .icon-btn .sun { display: none; }
+  :root[data-theme="light"] .icon-btn .moon { display: block; }
+
+  .resume-link-small {
+    font-size: 0.85rem; text-decoration: none; white-space: nowrap;
+    border-bottom: 1px solid var(--fg); padding-bottom: 2px;
+  }
+  @media (max-width: 760px) { nav.primary { display: none; } }
+
+  main { display: block; }
+  section { scroll-margin-top: calc(var(--header-h) + 12px); }
+
+  .section-label {
+    display: flex; align-items: baseline; gap: 0.6rem;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-faint); padding-top: var(--gap-md); margin-bottom: 1.75rem;
+  }
+  #contact .wrap { padding-bottom: var(--gap-sm); }
+  #experience .wrap, #projects .wrap { padding-bottom: var(--gap-md); }
+
+  /* Hero */
+  #top .wrap { padding-top: var(--gap-md); padding-bottom: var(--gap-lg); }
+  .hero-name {
+    margin: 0; font-weight: 600; letter-spacing: -0.04em; line-height: 0.95;
+    font-size: clamp(2.75rem, 9vw, 5.5rem);
+  }
+  .hero-name .accent {
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-style: italic; font-weight: 500; letter-spacing: -0.01em;
+  }
+  .hero-name .plain { font-weight: 300; letter-spacing: -0.03em; margin-left: 0.2em; }
+  .hero-rule { border: none; border-top: 1px solid var(--line); margin: 1.75rem 0; }
+  .hero-role { margin: 0 0 0.35rem; font-size: clamp(1.15rem, 2.4vw, 1.4rem); font-weight: 600; }
+  .hero-stack { margin: 0 0 1.5rem; color: var(--fg-muted); font-size: 0.92rem; }
+  .hero-statement { max-width: 56ch; color: var(--fg-muted); font-size: 1.05rem; }
+  .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; margin-top: 2.25rem; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--invert-bg); color: var(--invert-fg);
+    text-decoration: none; font-weight: 600; font-size: 0.95rem;
+    padding: 0.85rem 1.4rem; border-radius: 6px; transition: opacity 160ms ease;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-primary svg { width: 16px; height: 16px; }
+  .link-row { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+  .link-row a {
+    text-decoration: none; font-size: 0.9rem; color: var(--fg-muted);
+    border-bottom: 1px solid transparent; transition: color 160ms ease, border-color 160ms ease;
+  }
+  .link-row a:hover { color: var(--fg); border-color: var(--fg); }
+
+  /* Stats */
+  .band { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat { padding: 1.75rem 1rem; text-align: center; border-left: 1px solid var(--line); }
+  .stat:first-child { border-left: none; }
+  .stat .num { font-size: 1.9rem; font-weight: 600; display: block; }
+  .stat .label {
+    display: block; margin-top: 0.4rem; font-size: 0.66rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-muted);
+  }
+  @media (max-width: 640px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(3) { border-left: none; }
+    .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+  }
+
+  /* What I do */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .grid-3 .col { padding: 0 1.75rem; border-left: 1px solid var(--line); }
+  .grid-3 .col:first-child { padding-left: 0; border-left: none; }
+  .grid-3 .col:last-child { padding-right: 0; }
+  .col h3 { margin: 0 0 0.75rem; font-size: 1.05rem; }
+  .col p { margin: 0; color: var(--fg-muted); font-size: 0.94rem; }
+  @media (max-width: 900px) {
+    .grid-3 { grid-template-columns: 1fr; row-gap: 2.25rem; }
+    .grid-3 .col { padding: 0 !important; border-left: none !important; }
+    .grid-3 .col + .col { padding-top: 2.25rem !important; border-top: 1px solid var(--line-soft) !important; }
+  }
+
+  /* Skills */
+  .skill-row {
+    display: grid; grid-template-columns: 150px 1fr; gap: 1.5rem;
+    padding: 1.25rem 0; border-top: 1px solid var(--line-soft);
+  }
+  .skill-row:first-child { border-top: none; padding-top: 0; }
+  .skill-row .group-label {
+    font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--fg-muted); padding-top: 0.3rem;
+  }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag { font-size: 0.82rem; padding: 0.3rem 0.65rem; border: 1px solid var(--line); border-radius: 3px; color: var(--fg); }
+  @media (max-width: 640px) { .skill-row { grid-template-columns: 1fr; gap: 0.5rem; } }
+
+  /* Timeline (experience + projects) */
+  .timeline { border-left: 1px solid var(--line); }
+  .role { position: relative; padding: 0 0 2.5rem 1.75rem; }
+  .role:last-child { padding-bottom: 0; }
+  .role::before {
+    content: ""; position: absolute; left: -4.5px; top: 0.4rem;
+    width: 8px; height: 8px; background: var(--fg);
+  }
+  .role-head {
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
+    gap: 0.5rem 1rem; margin-bottom: 0.15rem;
+  }
+  .role-head .company { font-weight: 600; font-size: 1.05rem; }
+  .role-head .dates { font-size: 0.82rem; color: var(--fg-muted); white-space: nowrap; }
+  .role-title { color: var(--fg-muted); font-size: 0.92rem; margin: 0 0 1rem; }
+  .role-title .loc::before { content: "— "; }
+  .role ul { margin: 0; padding-left: 1.1rem; }
+  .role li { margin-bottom: 0.55rem; font-size: 0.94rem; }
+  .role li:last-child { margin-bottom: 0; }
+  .role li::marker { color: var(--fg-faint); }
+  .role a.proj-link { font-size: 0.85rem; color: var(--fg-muted); }
+  .role a.proj-link:hover { color: var(--fg); }
+
+  .edu { margin-top: 2.5rem; padding-top: 1.75rem; border-top: 1px solid var(--line-soft); }
+  .edu-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem 1rem; margin-bottom: 1.1rem; }
+  .edu-row:last-child { margin-bottom: 0; }
+  .edu .degree { font-weight: 600; }
+  .edu .meta { color: var(--fg-muted); font-size: 0.92rem; max-width: 46ch; }
+  .edu .dates { font-size: 0.82rem; color: var(--fg-muted); }
+
+  /* Resume band */
+  .resume-band { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg); }
+  .resume-band .wrap { padding-top: var(--gap-md); padding-bottom: var(--gap-md); text-align: center; }
+  .resume-band p.lead { max-width: 46ch; margin: 0 auto 2rem; font-size: 1.1rem; color: var(--fg); }
+  .resume-band .caption { margin: 1rem 0 0; font-size: 0.78rem; color: var(--fg-faint); }
+
+  /* Contact / footer */
+  .contact-list { list-style: none; margin: 0 0 1.75rem; padding: 0; }
+  .contact-list li {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.9rem 0; border-top: 1px solid var(--line-soft); font-size: 0.98rem;
+  }
+  .contact-list li:first-child { border-top: none; }
+  .contact-list a { text-decoration: none; }
+  .contact-list a:hover { text-decoration: underline; }
+  .contact-list .k { color: var(--fg-muted); font-size: 0.82rem; }
+  @media (max-width: 480px) { .contact-list li { flex-direction: column; align-items: flex-start; gap: 0.3rem; } }
+
+  footer.site { border-top: 1px solid var(--line); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+    padding: 1.5rem 0; font-size: 0.78rem; color: var(--fg-faint);
+  }
+
+  :focus-visible { outline: 1.5px solid var(--fg); outline-offset: 2px; }
+
+  [data-reveal] { opacity: 0; transform: translateY(10px); }
+  [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: no-preference) { [data-reveal] { transition: opacity 500ms ease, transform 500ms ease; } }
+  @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; } }
+  .js-disabled [data-reveal] { opacity: 1; transform: none; }
+
+  @media print {
+    header.site, .icon-btn, .cta-row, .link-row, .resume-band { display: none !important; }
+    body { background: #fff; color: #000; }
+    a { text-decoration: underline; }
+  }
+</style>
+</head>
+<body class="js-disabled">
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <div class="header-inner">
+    <a href="#top" class="logo" aria-label="Debdut Chowdhury — home">D</a>
+    <div class="header-right">
+      <nav class="primary mono" aria-label="Section navigation">
+        <a href="#work">What I do</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="Debdut_Chowdhury_Resume.pdf" download class="resume-link-small mono">↓ Résumé</a>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section id="top">
+    <div class="wrap">
+      <h1 class="hero-name"><span class="accent">Debdut</span> <span class="plain">Chowdhury</span></h1>
+      <hr class="hero-rule" />
+      <p class="hero-role">Senior Data Analyst</p>
+      <p class="hero-stack mono">Python · SQL · BigQuery · PySpark</p>
+      <p class="hero-statement">
+        I design scalable ETL pipelines, cloud architectures and data warehouses, and turn complex data
+        into clear executive insight through Power BI, Tableau and Looker dashboards. Based in Kolkata, India.
+      </p>
+      <div class="cta-row">
+        <a class="btn-primary" href="Debdut_Chowdhury_Resume.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 20h16"/></svg>
+          Download Résumé
+        </a>
+        <div class="link-row mono">
+          <a href="https://github.com/DebdutChowdhury" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://linkedin.com/in/debdutchowdhury" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="mailto:debdut.chowdhury.official@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap">
+      <div class="stat-grid">
+        <div class="stat"><span class="num mono">~4</span><span class="label">Years experience</span></div>
+        <div class="stat"><span class="num mono">25%</span><span class="label">Infra cost cut</span></div>
+        <div class="stat"><span class="num mono">35%</span><span class="label">Reporting efficiency gain</span></div>
+        <div class="stat"><span class="num mono">99.2%</span><span class="label">Anomaly detection accuracy</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="work" data-reveal>
+    <div class="wrap">
+      <div class="section-label"><span>01</span><span>What I Do</span></div>
+      <div class="grid-3">
+        <div class="col">
+          <h3>Data Engineering</h3>
+          <p>Build PySpark and BigQuery pipelines that cleanse high-volume financial data into Silver and Gold layers, so dashboards refresh from clean, dimensionally modelled tables instead of raw logs.</p>
+        </div>
+        <div class="col">
+          <h3>Cloud Migration</h3>
+          <p>Led a SaaS platform migration from AWS to GCP — moving images from ECR to GAR, rebuilding workloads from ECS on GKE, and setting up load balancing and CI/CD that cut infrastructure costs by ~25%.</p>
+        </div>
+        <div class="col">
+          <h3>Analytics &amp; BI</h3>
+          <p>Deliver Power BI, Looker and Tableau reporting backed by SSAS semantic models and optimized DAX, with automated refresh workflows that keep executives on current numbers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" data-reveal>
+    <div class="wrap">
+      <div class="section-label"><span>02</span><span>Skills</span></div>
+
+      <div class="skill-row">
+        <div class="group-label mono">Languages &amp; Querying</div>
+        <div class="tag-list mono">
+          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Google BigQuery</span><span class="tag">MySQL</span><span class="tag">PL/SQL</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="group-label mono">Visualization &amp; Reporting</div>
+        <div class="tag-list mono">
+          <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Tableau</span><span class="tag">Looker</span><span class="tag">Excel</span><span class="tag">matplotlib</span><span class="tag">Streamlit</span><span class="tag">Exploratory Data Analysis</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="group-label mono">Machine Learning</div>
+        <div class="tag-list mono">
+          <span class="tag">Supervised Learning</span><span class="tag">Unsupervised Learning</span><span class="tag">TensorFlow</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">K-Means</span><span class="tag">Neural Networks</span><span class="tag">Computer Vision</span><span class="tag">NLP</span><span class="tag">MLflow</span><span class="tag">ML Monitoring</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="group-label mono">Tools &amp; Cloud</div>
+        <div class="tag-list mono">
+          <span class="tag">GCP</span><span class="tag">AWS Glue</span><span class="tag">Apache Spark</span><span class="tag">PySpark</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">Apache Airflow (familiar)</span><span class="tag">Azure (familiar)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" data-reveal>
+    <div class="wrap">
+      <div class="section-label"><span>03</span><span>Experience</span></div>
+
+      <div class="timeline">
+        <div class="role">
+          <div class="role-head">
+            <span class="company">Soliva Technology LLP</span>
+            <span class="dates mono">Feb 2025 — Present</span>
+          </div>
+          <p class="role-title">Senior Data Analyst <span class="loc">Kolkata</span> · Client: Optival</p>
+          <ul>
+            <li>Built a PySpark job that reads files, applies basic transformations and cleanses high-volume affiliate financial data into the Silver layer in BigQuery. Designed and optimized BigQuery warehouse models and SQL transformations that publish production-ready, dimensionally modelled data to the Gold layer.</li>
+            <li>Connected a Looker dashboard to the Gold tables, giving executives a clean, lag-free view of financial performance. Improved reporting efficiency by ~35% and reduced processing costs by ~25%.</li>
+            <li>Migrated a high-volume SaaS platform from AWS to GCP: moved container images from ECR to GAR, rebuilt workloads from ECS on GKE, reconfigured global and regional architecture with GCP Cloud Load Balancing, and set up Cloud NAT IP allocation.</li>
+            <li>Optimized the CI/CD pipeline, improving delivery speed by ~35%, cutting infrastructure costs by ~25% and reducing pipeline deployment failures by ~40%.</li>
+            <li>Led a 4-member cross-functional data engineering team working with engineering, product, QA and client stakeholders. Mentored the team on SQL, PySpark, GCP, BigQuery, ETL, data quality and production practices, resulting in ~30% faster delivery cycles, ~25% higher team productivity and ~35% fewer delivery escalations.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <span class="company">KPMG</span>
+            <span class="dates mono">May 2022 — Apr 2024</span>
+          </div>
+          <p class="role-title">Associate Consultant <span class="loc">Noida</span></p>
+          <ul>
+            <li>Developed and maintained daily incremental ETL pipelines using SSIS and BigQuery for internal BICOE clients, scheduling jobs to extract, transform, validate and load data into warehouse environments.</li>
+            <li>Implemented data governance and quality checks, monitored production workflows with automated alerts, and resolved failures within SLAs — achieving ~30% faster processing, ~24% fewer ETL failures and ~32% faster incident resolution.</li>
+            <li>Built Power BI solutions for internal HR Analytics clients by integrating warehouse datasets with SSAS semantic models and writing optimized DAX for KPIs, aggregations and time-intelligence.</li>
+            <li>Automated dataset refresh workflows with monitoring and failure handling, improving reporting efficiency by ~35%, reducing manual refresh activity by ~70% and increasing report availability by ~30%.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="edu">
+        <div class="edu-row">
+          <div>
+            <div class="degree">Data Science &amp; ML course — Scaler</div>
+          </div>
+          <div class="dates mono">May 2024 — Jun 2025</div>
+        </div>
+        <div class="edu-row">
+          <div>
+            <div class="degree">Bachelor of Engineering in Electrical Engineering</div>
+            <div class="meta">Institute of Engineering and Management</div>
+          </div>
+          <div class="dates mono">Jul 2016 — Jul 2020</div>
+        </div>
+        <div class="edu-row">
+          <div>
+            <div class="degree">Achievements</div>
+            <div class="meta">KPMG Star Performer, 2023 · HackerRank Advanced SQL Certificate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" data-reveal>
+    <div class="wrap">
+      <div class="section-label"><span>04</span><span>Projects</span></div>
+
+      <div class="timeline">
+        <div class="role">
+          <div class="role-head">
+            <span class="company">NetGuardAI</span>
+            <a class="proj-link mono" href="https://github.com/DebdutChowdhury/Network-Anomaly-Detection" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+          <p class="role-title">ML-powered network anomaly detection for cyber defense</p>
+          <ul>
+            <li>Built an end-to-end ML intrusion detection system using Random Forest, XGBoost and ensemble stacking on the KDD CUP '99 dataset, reaching 99.2% classification accuracy with real-time monitoring via Streamlit and MLflow.</li>
+            <li>Developed a scalable pipeline with SMOTE-based class balancing, PCA feature selection and statistical hypothesis testing, improving model robustness by 18%.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="resume-band" data-reveal>
+    <div class="wrap">
+      <p class="lead">The full picture — pipelines, migrations, metrics and stack, on one page.</p>
+      <a class="btn-primary" href="Debdut_Chowdhury_Resume.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 20h16"/></svg>
+        Download Résumé
+      </a>
+      <p class="caption mono">PDF</p>
+    </div>
+  </div>
+
+  <section id="contact" data-reveal>
+    <div class="wrap">
+      <div class="section-label"><span>05</span><span>Contact</span></div>
+
+      <ul class="contact-list mono">
+        <li><span class="k">Email</span><a href="mailto:debdut.chowdhury.official@gmail.com">debdut.chowdhury.official@gmail.com</a></li>
+        <li><span class="k">Phone</span><a href="tel:+916290097207">+91 6290097207</a></li>
+        <li><span class="k">LinkedIn</span><a href="https://linkedin.com/in/debdutchowdhury" target="_blank" rel="noopener noreferrer">linkedin.com/in/debdutchowdhury</a></li>
+        <li><span class="k">GitHub</span><a href="https://github.com/DebdutChowdhury" target="_blank" rel="noopener noreferrer">github.com/DebdutChowdhury</a></li>
+        <li><span class="k">Location</span><span>Kolkata, India</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-bottom mono">
+      <span>© 2026 Debdut Chowdhury</span>
+      <span>Built with plain HTML &amp; CSS</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.body.classList.remove('js-disabled');
+
+  var root = document.documentElement;
+  var toggle = document.getElementById('theme-toggle');
+
+  function currentTheme() { return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark'; }
+  function syncToggle() {
+    var isLight = currentTheme() === 'light';
+    toggle.setAttribute('aria-pressed', String(isLight));
+    toggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+  }
+  syncToggle();
+
+  toggle.addEventListener('click', function () {
+    var next = currentTheme() === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    syncToggle();
+  });
+
+  var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sections = document.querySelectorAll('[data-reveal]');
+  var navLinks = document.querySelectorAll('nav.primary a');
+
+  if ('IntersectionObserver' in window) {
+    if (!reduceMotion && sections.length) {
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      sections.forEach(function (s) { revealObserver.observe(s); });
+    } else {
+      sections.forEach(function (s) { s.classList.add('is-visible'); });
+    }
+
+    var navTargets = ['work', 'skills', 'experience', 'projects', 'contact']
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+
+    if (navTargets.length) {
+      var navObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            navLinks.forEach(function (link) {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+            });
+          }
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+      navTargets.forEach(function (t) { navObserver.observe(t); });
+    }
+  } else {
+    sections.forEach(function (s) { s.classList.add('is-visible'); });
+  }
+})();
+</script>
+</body>
+</html>
